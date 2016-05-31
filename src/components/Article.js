@@ -1,47 +1,35 @@
 import React, { PropTypes, Component } from 'react'
+import Comments from './Comments'
 
 class Article extends Component {
 
     state = {
         isOpen: false
-    }
+    };
 
     render() {
-        const { article } = this.props
-        const { isOpen } = this.state
+        const { article } = this.props;
+        const { isOpen } = this.state;
 
         if (!article) return <h3>No article</h3>
-        const body = isOpen ? <section>{article.text}</section> : null
+        const text = isOpen ? <section>{article.text}</section> : null;
+        const comments = article.comments ? <Comments comments = {article.comments} /> : null;
 
         return (
             <div>
                 <h3 onClick = {this.toggleOpen}>{article.title}</h3>
-                {body}
+                {text}
+                {comments}
             </div>
         )
     }
 
-    toggleOpen = (ev) => {
+    toggleOpen = () => {
         this.setState({
             isOpen: !this.state.isOpen
         })
     }
 }
-
-
-
-/*
-function Article(props) {
-    const { article } = props
-    if (!article) return <h3>No article</h3>
-    return (
-        <div>
-            <h3>{article.title}</h3>
-            <section>{article.text}</section>
-        </div>
-    )
-}
-*/
 
 Article.propTypes = {
     article: PropTypes.shape({
