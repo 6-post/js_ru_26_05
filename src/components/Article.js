@@ -1,33 +1,28 @@
 import React, { PropTypes, Component } from 'react'
-import Comments from './Comments'
+import CommentList from './CommentList'
 
 class Article extends Component {
-
-    state = {
-        isOpen: false
-    };
-
     render() {
-        const { article } = this.props;
-        const { isOpen } = this.state;
-
+        const { article, openArticle } = this.props
         if (!article) return <h3>No article</h3>
-        const text = isOpen ? <section>{article.text}</section> : null;
-        const comments = article.comments ? <Comments comments = {article.comments} /> : null;
 
         return (
             <div>
-                <h3 onClick = {this.toggleOpen}>{article.title}</h3>
-                {text}
-                {comments}
+                <h3 onClick = {openArticle}>{article.title}</h3>
+                {this.getBody()}
             </div>
         )
     }
 
-    toggleOpen = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
+    getBody() {
+        const { article, isOpen } = this.props;
+        if (!isOpen) return null;
+        return (
+            <section>
+                {article.text}
+                <CommentList comments = {article.comments} />
+            </section>
+        )
     }
 }
 
@@ -37,6 +32,8 @@ Article.propTypes = {
         text: PropTypes.string,
         id: PropTypes.string.isRequired
     }),
+    isOpen: PropTypes.bool,
+    openArticle: PropTypes.func,
     options: PropTypes.object
 }
 
