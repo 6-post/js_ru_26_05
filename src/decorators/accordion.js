@@ -13,7 +13,7 @@ export default (CustomComponent) => class DecoratedComponent extends Component {
 
     accordion = id => ev => {
         const {openedArticle, isOpen} = this.state;
-
+        //лучше просто обнулять id открытого элемента если он уже открыт, чем меньше живет в стейте - тем лучше
         this.setState({
             openedArticle: id,
             isOpen: id === openedArticle && !isOpen
