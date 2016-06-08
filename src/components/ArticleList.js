@@ -62,9 +62,6 @@ class ArticleList extends Component {
             value: article.id
         }));
 
-        console.log(fromTimestamp);
-        console.log(toTimestamp);
-
         return (
             <div>
                 <DayPicker
