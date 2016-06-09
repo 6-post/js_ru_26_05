@@ -41,7 +41,7 @@ class ArticleList extends Component {
     render() {
         const { articles, isOpen, openItem } = this.props;
         const { from, to } = this.state;
-
+        //хорошее решение, но .getTime() на самом деле лишнее
         const fromTimestamp = new Date(from).getTime();
         const toTimestamp = new Date(to).getTime();
 
