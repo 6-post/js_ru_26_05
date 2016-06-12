@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen'
+import { addComment } from '../AC/comment'
+import { addIdComment } from '../AC/articles'
 
 class CommentList extends Component {
     static defaultProps = {
@@ -18,6 +20,7 @@ class CommentList extends Component {
             <div>
                 {this.getToggler()}
                 {this.getList()}
+                {this.getFormAdd()}
             </div>
         )
     }
@@ -38,11 +41,39 @@ class CommentList extends Component {
     }
 
     getList() {
-        const { comments, isOpen } = this.props
+        const { comments, isOpen } = this.props;
         if (!isOpen) return null
         if (!comments || !comments.length) return <h3>No comments yet</h3>
         const items = comments.map(comment => <li key = {comment.id}><Comment comment = {comment} /></li>)
         return <ul>{items}</ul>
+    }
+
+    getFormAdd() {
+        const {isOpen} = this.props;
+        if (!isOpen) return null
+        return <div>
+            <p><input ref="input" type="text" placeholder="Name" /></p>
+            <p><textarea ref="textarea" placeholder="Text" name="comment" cols="40" rows="3" /></p>
+            <input type="submit" onClick = {this.handleAddComment} value="Add comment" />
+            <input type="reset" value="Clear" />
+        </div>
+    }
+
+    handleAddComment = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+
+        const {comments, articleId} = this.props;
+        const {input, textarea} = this.refs;
+        const idComment = ++comments.length;
+        
+        addComment({
+            id: idComment,
+            name: input.value,
+            text: textarea.value
+        });
+
+        addIdComment(articleId, idComment);
     }
 }
 
