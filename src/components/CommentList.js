@@ -66,7 +66,10 @@ class CommentList extends Component {
         const {comments, articleId} = this.props;
         const {input, textarea} = this.refs;
         const idComment = ++comments.length;
-        
+        //это плохо:
+        //1) незачем разбивать на 2 отдельных экшина, 
+        //2) герерацию id лучше делать в AC,
+        //3) id как comments.length(тем-более length комментов к конкретной статье) не будет уникальным 
         addComment({
             id: idComment,
             name: input.value,
