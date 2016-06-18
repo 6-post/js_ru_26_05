@@ -1,24 +1,24 @@
 import React, { PropTypes, Component } from 'react'
 import {connect } from 'react-redux'
-import CommentList from './CommentList'
+//import CommentList from './CommentList'
 import { deleteArticle } from '../AC/articles'
 
 class Article extends Component {
 
-/*
-    shouldComponentUpdate(nextProps, nextState) {
-        //pseudo code
-        //nextProps.article.text === this.props.article.text
-        return nextProps.article != this.props.article || this.props.isOpen != nextProps.isOpen
-    }
+    /*
+     shouldComponentUpdate(nextProps, nextState) {
+     //pseudo code
+     //nextProps.article.text === this.props.article.text
+     return nextProps.article != this.props.article || this.props.isOpen != nextProps.isOpen
+     }
 
-*/
+     */
 
-/*
-    componentWillReceiveProps({ isOpen, article : { id, text, loading } }) {
-        if (isOpen && !text && !loading) loadArticleById({ id })
-    }
-*/
+    /*
+     componentWillReceiveProps({ isOpen, article : { id, text, loading } }) {
+     if (isOpen && !text && !loading) loadArticleById({ id })
+     }
+     */
 
     render() {
         const { article, openArticle } = this.props
@@ -41,7 +41,7 @@ class Article extends Component {
             <section>
                 {loader}
                 {article.text}
-                <CommentList article = { article} />
+                {/*<CommentList article = { article} />*/}
             </section>
         )
     }

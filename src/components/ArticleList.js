@@ -13,7 +13,7 @@ class ArticleList extends Component {
         const articleItems = articles.map((article) => <li key={article.id}>
             <Article article = {article}
                      isOpen = {isOpen(article.id)}
-                openArticle = {openItem(article.id)}
+                     openArticle = {openItem(article.id)}
             />
         </li>)
 

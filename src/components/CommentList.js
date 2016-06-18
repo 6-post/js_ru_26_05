@@ -25,21 +25,21 @@ class CommentList extends Component {
         )
     }
 
-/*
-    componentDidMount() {
-        console.log('I am mounted')
-    }
+    /*
+     componentDidMount() {
+     console.log('I am mounted')
+     }
 
-    componentWillReceiveProps({ isOpen, article }) {
-        if (isOpen && getRelation(article, 'comments').includes(undefined) && !article.loadingComments) loadCommentsForArticle(article)
-    }
+     componentWillReceiveProps({ isOpen, article }) {
+     if (isOpen && getRelation(article, 'comments').includes(undefined) && !article.loadingComments) loadCommentsForArticle(article)
+     }
 
-    componentWillUpdate(nextProps) {
-        console.log(this.props.isOpen, ' changes to ', nextProps.isOpen)
-    }
+     componentWillUpdate(nextProps) {
+     console.log(this.props.isOpen, ' changes to ', nextProps.isOpen)
+     }
 
 
-*/
+     */
 
     getToggler() {
         const { isOpen, toggleOpen } = this.props
