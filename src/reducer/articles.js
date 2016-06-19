@@ -12,6 +12,7 @@ export default (articles = normalizedArticles, action) => {
         case ADD_COMMENT:
             const newArticles = articles.filter((article) => article.id !== payload.articleId);
             const article = articles.filter((article) => article.id === payload.articleId)[0];
+            //здесь вы мутируете article - плохо
             article.comments = (article.comments || []).concat(payload.comment.id);
             return newArticles.concat(article);
             break;
