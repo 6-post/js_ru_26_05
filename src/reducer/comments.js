@@ -21,6 +21,7 @@ export default (comments = defaultState, action) => {
         case LOAD_COMMENTS_WITH_OFFSET + SUCCESS:
             return comments
                 .set('total', response.total)
+                //ведь комменты в здесь и в entities ничем не отличаются - незачем лишний маппинг заводить + вы снова перезаписываете их каждый раз
                 .set('comments', fromJS(fromArray(response.records)));
     }
 
